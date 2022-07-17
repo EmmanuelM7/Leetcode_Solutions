@@ -5,6 +5,9 @@
 #         self.next = next
 class Solution:
     def removeElements(self, head: Optional[ListNode], val: int) -> Optional[ListNode]:
+    
+        #Time: O(n)
+        #Space: O(1)
         
         #dummy head technique
         dummy = ListNode(0, head)
