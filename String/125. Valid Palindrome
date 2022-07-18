@@ -1,0 +1,29 @@
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        #Time: O(n)
+        #Space: O(1)
+       
+        #two pointer technique 
+        left = 0
+        right = len(s) - 1
+        
+        #if left equals right then we reached middle of odd length string
+        #although multiple while loops if the first condition of either inner while loop were implemented the loop could not continue running
+        while left < right:
+            while left < right and not self.alphaNum(s[left]):
+                left += 1
+            while right > left and not self.alphaNum(s[right]):
+                right -= 1
+            #have to check using lower function
+            if s[left].lower() != s[right].lower(): 
+                return False
+            left += 1 #increment left pointer
+            right -= 1 #decrement right pointer
+            
+        return True
+            
+        
+    #could used the isalpha built-in function instead of making function
+    def alphaNum(self, c: str) -> bool:
+        return (('a' <= c.lower() <= 'z') or ('0' <= c <= '9'))
+        
