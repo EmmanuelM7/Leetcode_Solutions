@@ -1,0 +1,25 @@
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        #guaranteed that roman numeral is valid
+        
+        #main issue is checking whether the first numeral is greater than the next
+        
+        #Time: O(n) because string could be 1 to 15
+        #Space: O(1) because dictionary is always 7 pairs
+        
+        #map each symbol to value
+        romanMap = {'I' : 1, 'V' : 5, 'X' : 10, 'L' : 50, 'C' : 100, 'D' : 500, 'M' : 1000}
+        
+        #resulting variable
+        res = 0
+        
+        for i in range(len(s)):
+            #check if next numeral is bigger than current
+            #if it is we subtract
+            if i + 1 < len(s) and romanMap[s[i]] < romanMap[s[i + 1]]:
+                res -= romanMap[s[i]]
+            else:
+                res += romanMap[s[i]]
+        
+        return res
+                
