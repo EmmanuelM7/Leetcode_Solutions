@@ -1,0 +1,41 @@
+class Solution:
+    def evalRPN(self, tokens: List[str]) -> int:
+        
+        #Time: O(n)
+        #Space: O(n)
+        
+        
+        #implement a stack
+        #anytime we reach an operator pop the two most recent operands
+        
+        
+        stack = []
+
+        
+        for token in tokens:
+            if token not in "+-*/":
+                stack.append(int(token))
+                continue
+            
+            right_op = stack.pop()
+            left_op = stack.pop()
+            
+            #need to use if instead of elif because the unindented lines above make it
+            # an invalid elif sequence
+            if token == "+":
+                num = left_op + right_op
+                stack.append(num)
+            elif token == "-":
+                num = left_op - right_op
+                stack.append(num)
+            elif token == "*":
+                num = left_op * right_op
+                stack.append(num)
+            elif token == "/":
+                num = int(left_op / right_op)
+                stack.append(num)
+        
+        #since we only have one value at the end we pop it out
+        return stack.pop()
+                
+            
