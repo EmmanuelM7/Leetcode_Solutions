@@ -1,0 +1,21 @@
+class Solution:
+    def firstUniqChar(self, s: str) -> int:
+          #use a map to keep track of the number of duplicates in each character
+        #then iterate again to see the first character that has only a value of 1 and return index
+        #Time:O(n)
+        #Space:O(n)
+        
+        uniqueMap = {}
+        
+        for i in s:
+            if i in uniqueMap:
+                uniqueMap[i] += 1
+            else:
+                uniqueMap[i] = 1
+        
+        
+        for i in range(len(s)):
+            if s[i] in uniqueMap and uniqueMap[s[i]] == 1:
+                return i
+            
+        return -1
