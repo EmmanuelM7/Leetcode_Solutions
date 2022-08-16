@@ -1,0 +1,35 @@
+class Solution:
+    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
+        
+        #Time: O(n log n) because of sort function
+        #Space: O(n)
+        
+        #check if interval is empty
+        if not intervals:
+            return [[]]
+        
+        #could create sorting algorithm if interviewer asks
+        #sorts intervals by start value
+        intervals.sort()
+        
+        #create list of merged intervals
+        merged = []
+        
+        #insert first interval into merged
+        merged.append(intervals[0])
+        
+        for interval in intervals:
+            #get current start and previous end to compare
+            current_interval_start = interval[0]
+            prev_interval_end = merged[-1][1]
+            
+            #reminder: if the start and ends are equal then they are technically overlapping
+            is_overlapping = current_interval_start <= prev_interval_end 
+            
+            if not is_overlapping:
+                merged.append(interval)
+            else:
+                current_interval_end = interval[1]
+                merged[-1][1] = max(prev_interval_end, current_interval_end)
+        
+        return merged
