@@ -1,0 +1,26 @@
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution(object):
+    def postorderTraversal(self, root):
+        #Time: O(n) at worst case an unbalanced binary tree would just be straight down
+        #Space: O(n) using array that may store all nodes
+        
+        res = []
+        
+        if root:
+            if root.left:     
+                res += self.postorderTraversal(root.left)
+            if root.right:
+                res += self.postorderTraversal(root.right)
+            res.append(root.val) #in python you must append not use + to add an int value
+        
+        return res
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+        """
+        
