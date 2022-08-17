@@ -1,0 +1,39 @@
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution(object):
+    def inorderTraversal(self, root):
+        
+        #in python with traversals we should return the answer with a list
+        #inorder is left,root, right
+        #recursion tends to be used for traversals
+        #when using a function within the class you must use self keyword
+        
+        
+        
+        res = []
+        #first check to see if tree is empty so we don't get a pointer error
+        if root:
+        
+            if root.left:
+                res += self.inorderTraversal(root.left)
+
+            res.append(root.val)
+
+            if root.right:
+               res += self.inorderTraversal(root.right)
+            
+        return res
+        
+        
+        
+        
+        
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+        """
+        
