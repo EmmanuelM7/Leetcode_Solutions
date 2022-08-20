@@ -1,0 +1,40 @@
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution(object):
+    def isSameTree(self, p, q):
+        
+        #review time and space of this problem
+        #Time: O(p + q) or O(n) if tree has same number of nodes
+        #Space: O(p+q) or O(n) if tree has same number of nodes
+        
+        
+        #idea is to use a preorder traversal/dfs
+        #we check if roots are the same then check left and right subtree
+        
+        #if both are  null then same node
+        if not p and not q:
+            return True
+        #if only one is null then they are not the same
+        if not p or not q:
+            return False
+        
+        #check if values are the same
+        if p.val != q.val:
+            return False
+        
+        #we do not put true because we know that in trees eventually when
+        #you get to the leaves there right and left node should be null
+        #and putting true now would stop traversal of the entire tree
+        
+        return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
+    
+    
+        """
+        :type p: TreeNode
+        :type q: TreeNode
+        :rtype: bool
+        """
