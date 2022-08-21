@@ -1,0 +1,41 @@
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution(object):
+    def insertIntoBST(self, root, val):
+        
+        #Understand 
+        #We know that the new value does not exist so it is unique
+        #Tree can be empty at start so we would create a tree object if inserting
+        #Tree seems to not have to be balanced
+        
+        #Match
+        #DFS/Preorder traversal seems to be a smart approach since we would do like a top down         #traversal
+        #recursive solution, but always ask about number of nodes for stack overflow
+        
+        #Time: O(h) height of tree
+        #Space: O(h) height of tree
+        
+        #check if null/empty
+        if not root:
+            return TreeNode(val)
+        
+        #if val is greater than root, we head to right subtree
+        if val > root.val:
+            root.right = self.insertIntoBST(root.right, val)
+        else:
+        #if val is less than root, we head to left subtree
+            root.left = self.insertIntoBST(root.left, val)
+        
+        
+        return root
+        
+        """
+        :type root: TreeNode
+        :type val: int
+        :rtype: TreeNode
+        """
+        
