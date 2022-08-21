@@ -1,0 +1,47 @@
+class Solution(object):
+    def isValid(self, s):
+        
+        #automatically with this problem, you are probably gonna need a hashmap
+        #and stack
+        
+        #when traversing through the string
+        #if the character is an opening bracket push it onto stack
+        #If the character is a closing bracket, pop value from the stack
+        #ask interviewer if I can start off with a closing bracket as that is an edge case
+        
+        #Time: O(n) traverse through entire array
+        #Space: O(1) both dictionary and List are constant
+        
+        parentheses_dict = {')':'(', '}':'{', ']':'['}
+        opening = ['(', '[', '{']
+        
+        
+        stack = [] #"['']"
+        
+       #s = "]"
+        
+        for i in range(len(s)):
+            if s[i] in opening: #s[0] = ']'
+                stack.append(s[i])
+            else:
+                if len(stack) != 0:
+                    top_element = stack.pop() #'None'
+                else:
+                    top_element = None
+                #compare closing key:val pair with top element
+                if parentheses_dict[s[i]] != top_element:
+                        return False
+        
+        if len(stack) != 0:
+            return False
+                    
+        
+        return True
+            
+            
+        #
+        """
+        :type s: str
+        :rtype: bool
+        """
+        
