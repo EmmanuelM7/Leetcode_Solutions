@@ -1,0 +1,79 @@
+lass Solution:
+    def findUnsortedSubarray(self, nums: List[int]) -> int:
+        '''
+        -this problem follows the two pointer technique
+        -originally I thought I had to find the actual subarray and 
+        -essentially use more space, but with the two pointer technique we can
+        -subtract the right - left vals at the end to get the shortest length 
+        '''
+        
+        #strategy
+        #use a left and right pointer to check for smallest subarray in place
+        #iterate from left and if nums[l] > nums[i] starting at 1
+        #remember to increment l
+        #then left pointer is l
+        #iterate from right  and if nums[r] < nums[i] starting at len(arr) - 2
+        #then we found the right pointer 
+        #then go through the array again and check if l is the minimum
+        #if not, update l
+        #then go through through the right, check if r is the maximum,
+        #if not then update
+        #possible out of bounds error
+        
+        
+        #Time: O(n)
+        #Space: O(1)
+        
+        #[2,3,3,2,4]
+        left, right = 0, len(nums) - 1 #0, 4
+        
+        #find original left pointer
+        # since we are comparing leftmost pointer to the index to the right we must subtract
+        #range by 1 to avoid out of bounds error
+        #[1] 
+        for i in range(len(nums) - 1):
+            if nums[left] > nums[i + 1]:
+                break
+            left+=1
+            
+        if left == (len(nums) - 1):
+            return 0
+        
+        
+        
+        #find original right pointer
+        for i in range(len(nums) - 2, -1, -1):
+            if nums[right] < nums[i]:
+                break
+            right-=1
+        print(left, right)
+        
+        # localMin 
+        localMin = float('inf') #infinity in python so no number is bigger
+        
+         # localMax
+        localMax = -float('inf') # negative infinity in python so no number is smaller
+        
+        #should not be an out of bounds error since right is always gonna be a valid index
+        for i in range(left, right + 1):
+            localMax = max(localMax, nums[i]) #should not have out of bounds error since neither pointer is bigger
+            localMin = min(localMin, nums[i])
+    
+        print(localMax, localMin)
+                           # 1
+        for j in range(0, left):
+            if nums[j] > localMin:
+                left = j #should break immediatley since leftmost value
+                break
+        print(left)
+        for k in range(len(nums) - 1, right, - 1):
+            if nums[k] < localMax:
+                right = k #should break immediatley since rightmost value
+                break
+            
+        print(left, right)
+                
+        return right - left + 1
+        
+                
+        
