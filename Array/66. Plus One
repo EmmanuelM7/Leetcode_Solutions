@@ -1,0 +1,39 @@
+class Solution:
+    def plusOne(self, digits: List[int]) -> List[int]:
+        
+        
+        #Time: O(n)
+        #Space: O(1)
+        
+        
+        #first reverse digits because it will be easier to add(O(n) time)
+        digits = digits[::-1]
+        
+        #use a variable to keep track of whether a digit needs to be appended
+        #if the variable equals 1 than we append a digit, else no
+        #if the digit is equal to 9 then we know that the tracker variable stays the same
+        #and that the next variable needs to be added a one, 
+        #if we go
+        #through the array and the one stays the same then we know we must append a digit
+        #since it has exceeded the number of digits
+        
+        one = True
+        
+        
+        #[1,2,9] 
+                        #2
+        for i in range(len(digits)):
+            if digits[i] == 9: #[1, 3, 0]
+                digits[i] = 0
+            else:
+                digits[i] += 1
+                one = False
+                break
+                
+        #if true then we append
+        if one:
+            digits.append(1)
+        
+        #we have to reverse back the array
+        return digits[::-1]
+            
