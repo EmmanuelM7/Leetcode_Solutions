@@ -1,0 +1,29 @@
+class Solution:
+    def moveZeroes(self, nums: List[int]) -> None:
+        
+        #This problem can most likely be done using a two pointer
+        #use a left and right pointer, you can start at 0 for both to avoid out of bounds error
+        #then we iterate through our for loop
+            #if nums[left] equals 0 and right does not equal 0 then we swap values and increment left by 1
+        #increment right by 1, this one always increments
+        
+        #Time: O(n)
+        #Space: O(1)
+        
+        #our slow and fast pointer
+        slow, fast = 0, 0
+                        #i = 1
+        for i in range(len(nums)):
+            if nums[slow] == 0 and nums[fast] != 0: #1, 0
+                nums[slow], nums[fast] = nums[fast], nums[slow]
+                slow += 1
+            if nums[slow] != 0 and nums[fast] == 0: #we have to move the slow pointer to where fast is
+                slow = fast
+                
+            fast += 1
+                
+            
+                
+        """
+        Do not return anything, modify nums in-place instead.
+        """
