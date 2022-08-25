@@ -1,0 +1,59 @@
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        #in an interview, first ask about what an anagram is
+        # then, ask if the strings will have the same length
+        #if the string doesn't have the same length then that is an edge case to knock out
+        
+        #first thing I would do is check if the lengths are equal
+            #if not then we would return false
+        
+        #afterwards I would create a dictionary for both strings
+        #make it into a helper function, for cleaner code
+        #key = character, val = # of that character
+        
+        #iterate through t and check if that character is in s
+            #if in s then we check that the t_dict[t[i]] == s_dict[t[i]]
+                #if this is true, then we continue
+                #else, false
+            #else, false
+            
+        
+        #if we made it all this way without returning false, then equals true
+        
+        
+        
+        #Time: O(n)
+        #Space: O(n)
+        
+        if len(s) != len(t):
+            return False
+        
+        s_dict = {}
+        t_dict = {}
+        
+        s_dict = self.create_dict(s_dict, s)
+        t_dict = self.create_dict(t_dict, t)
+        
+        for i in t:
+            if i in s:
+                if t_dict[i] == s_dict[i]:
+                    continue
+                else:
+                    return False
+            #do not need an else because if true then continue statement will not allow this to be reached
+            return False
+        
+        return True
+                
+        
+    def create_dict(self, hashMap, word):
+        
+        for c in word:
+            if c in hashMap:
+                hashMap[c] += 1
+            else:
+                hashMap[c] = 1
+        
+        return hashMap
+        
+        
