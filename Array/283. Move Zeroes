@@ -10,6 +10,8 @@ class Solution:
         #Time: O(n)
         #Space: O(1)
         
+        #neetcode solution is slightly easier and shorter
+        
         #our slow and fast pointer
         slow, fast = 0, 0
                         #i = 1
