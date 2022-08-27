@@ -1,0 +1,28 @@
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        #typically with removing duplicates we would use some sort of hashMap or set
+        #but here the constraint is doing it in place
+        #since the numbers in the array cannot be less than -100 or more than 100
+        #I will make all the duplicates  101 
+        #we don't have to worry about the edge case of empty
+        
+        #plan
+        #our left pointer is the pointer that we want to switch when we find a unique
+        
+        #Time: O(n)
+        #Space: O(1) technically O(n) with list, but we are referring to extra space
+        
+        
+        #start at 1 since first number will always be unique
+        left = 1
+        
+        #we don't have to worry about out of bound error now because in this case
+        #if the len(nums) is 1 the
+        for right in range(1,len(nums)):
+            if nums[right - 1] != nums[right]:
+                nums[left] = nums[right]
+                left += 1
+        
+        return left
+                
+      
