@@ -1,0 +1,54 @@
+class Solution:
+    def minSubArrayLen(self, target: int, nums: List[int]) -> int:
+        
+        #clarifying questions:
+        #can the integers be negative? In this case no
+        #can there be a scenario where there is no such subarray? yes
+        #must the subarray be contiguous? yes
+        #could the answer be the entire array itself? believe yes
+        #could the array be a single value? yes
+        
+        #match
+        #we know it is a array problem so techniques such as:
+        #sorting (this would probably be less time efficient)
+        #two pointer
+        #hashing could all be used (this would be space inefficient)
+        #for this problem, a two pointer seems to be the most optimal for time and space
+        
+        #plan
+        #use a two pointer technique where were are essentially pushing and pulling the             pointers inorder to find the smallest subarray/interval
+        
+        #your end/right pointer is the one traversing the array
+        #start/left is the beginning of the interval
+        
+        #we should have a subarray_sum to keep track of
+        #min_length to keep track
+        
+        #we add to the sum until we have a value >= to sum
+        #after that we put it in a while loop and decrement sum by nums[start]
+        #then we increment the start pointer to push in the interval
+        
+        #Time: O(n)
+        #Space: O(1)
+        
+        #starter pointer
+        left = 0
+        min_length = float("inf")
+        subarray_sum = 0
+        
+        for right in range(len(nums)):
+            subarray_sum += nums[right]
+            
+            while subarray_sum >= target:
+                min_length = min(min_length, right - left + 1)
+                subarray_sum -= nums[left]
+                left += 1
+            
+        
+        #if we never reach the while loop then we cannot have an answer
+        if min_length == float("inf"):
+            return 0
+        else:
+            return min_length
+        
+        
