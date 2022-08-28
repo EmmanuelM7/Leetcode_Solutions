@@ -1,0 +1,28 @@
+class Solution:
+    def reverseWords(self, s: str) -> str:
+        
+        ##this problem could technically be done in one line using leetcode solution
+        
+        #Time: O(n)
+        #Space: O(n) this is because of array
+        
+        
+        #this function runs O(n)
+        reversedWord = s.split() #this function pretty much disregards any spaces
+        
+        
+        left, right = 0, len(reversedWord) - 1
+        
+        #O(n / 2)
+        while left < right:
+            reversedWord[left], reversedWord[right] = reversedWord[right], reversedWord[left]
+            left += 1
+            right -= 1
+        
+        
+        reversedWord = " ".join(reversedWord) #this function has a time complexity of O(n)
+        
+        
+        return reversedWord
+    
+            
