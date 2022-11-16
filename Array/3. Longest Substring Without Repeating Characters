@@ -1,0 +1,44 @@
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        #Understand 
+        #since it is a substring we know it is a contiguous sequence in a string
+        #ask what characters they could ask? 
+        #potentially ask about what they mean a substring is
+        #potentially ask about subsequences
+        #will the array ever be empty? What would we do in this case
+        #I believe whether it 1 or more characters it does not matter
+        #is there a time or space constraint
+        #are lowercase and upper case considered different
+
+        #Match
+        #since we don't want repeating characters we know that we need a a data structure
+        # that helps keep track of unique elements (hashMap or set)
+        #a set would probably be better here since we don't need anything in pairs
+
+        #plan
+
+        #use a set to keep track of unique substring
+        #use a counter variable to keep track of longest value
+        #sliding window approach
+        #we will have a fast pointer that goes through every element
+        #we will have a slow pointer that only moves when the fast is already in the set
+
+        #implement
+
+        #Time: O(N)
+        #Space: O(N) because all of the words could be unique
+
+        count = 0
+        l = 0 # left pointer
+        charSet = set() #a
+        #abcabcbb
+
+        for r in range(len(s)): #2
+            while s[r] in charSet:
+                charSet.remove(s[l])
+                l += 1
+                
+            charSet.add(s[r])
+            count = max(count, r - l + 1)
+        
+        return count
