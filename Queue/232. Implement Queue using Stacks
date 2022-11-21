@@ -1,0 +1,61 @@
+class MyQueue:
+    #Understand
+    #Ask interviewer if peek and pop can be chosen if queue is empty? No
+    #Is there a limit to the number of stacks I can use?
+    #ask for a time constraint? We want all of the functions to amortized O(1)
+
+    #match
+    #clearly use stacks
+
+    #plan
+    #use two stacks (input and output stack)
+    #the main issues are the pop and peek function
+    #if when we pop the ouput stack is empty it means we need to take all of the values of the 
+    #input and pop it to the output stack, then pop from the output stack
+
+    #the same for the peek function, however, we would not pop from ouputS we would just do outputS[-1]
+
+
+    def __init__(self):
+        self.inputS = [] #input stack
+        self.outputS = [] #output stack
+
+        
+
+    def push(self, x: int) -> None:
+        self.inputS.append(x)
+
+        
+    #input = [] and output = [2]
+    def pop(self) -> int:
+        #if the stack is empty it is equal to False so not False means True which means it is empty
+        if not self.outputS:
+            while len(self.inputS) != 0:
+                self.outputS.append(self.inputS.pop())
+            return self.outputS.pop() #this would then be the top of the stack
+        else:
+            #if our output stack has values then the top of that stack is what we have to pop
+            return self.outputS.pop()
+    
+
+
+
+
+    def peek(self) -> int:
+        if not self.outputS:
+            while len(self.inputS) != 0:
+                self.outputS.append(self.inputS.pop())
+            return self.outputS[-1] #this would then be the top of the stack
+        else:
+            #if our output stack has values then the top of that stack is what we have to pop
+            return self.outputS[-1]
+        
+
+    def empty(self) -> bool:
+        #if both the input and the output stacks are empty then we know that it is empty
+        #else False
+
+        if not self.outputS and not self.inputS:
+            return True
+        else:
+            return False
