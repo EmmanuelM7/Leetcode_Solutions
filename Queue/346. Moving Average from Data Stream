@@ -1,0 +1,36 @@
+from collections import deque 
+#understand 
+#what should be the output of the average
+#could we have size of 0? No
+class MovingAverage:
+
+    def __init__(self, size: int):
+        self.q = deque()
+        self.size = size
+        self.total = 0
+
+    def next(self, val: int) -> float:
+        #if the length of our q is less than or equal to size of window then we divide by its length
+        #else: we popleft and divide by windowsize
+        total = 0 #to keep track of value
+        self.q.append(val)
+        self.total += val
+
+
+        if len(self.q) <= self.size:
+            return self.total / len(self.q)
+        else:
+            self.total -= self.q.popleft()
+            return self.total / len(self.q)
+
+
+
+            
+
+
+        
+
+
+# Your MovingAverage object will be instantiated and called as such:
+# obj = MovingAverage(size)
+# param_1 = obj.next(val)
