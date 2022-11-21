@@ -1,0 +1,39 @@
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        #first thing to ask would be are s and t in the same case? yes
+        #Are we guaranteed that s and t have the same length? No
+        #can we have empty strings? No (if we did would that be considered an anagram if both are empty)
+
+
+        #match
+        #use a dictionary to keep track of the frequency of letters
+        #key = letter, val = #
+
+        #plan
+        #we could potentially use two maps one for s and one for t
+        #iterate through s and store key and val in map for s and t
+        
+        #iterate through the keys in one of the maps (ill do s)
+            #if the key is in tMap 
+                #check if sMap[key] == tMap[key] (checks if they have same # of occurrences)
+                    #continue
+                #else
+                    #return False
+            #else
+                # return False
+        if len(t) != len(s):
+            return False
+
+        sMap = {}
+        tMap = {}
+
+        for i in range(len(s)):
+            sMap[s[i]] = 1 + sMap.get(s[i], 0)
+            tMap[t[i]] = 1 + tMap.get(t[i], 0)
+        
+        for key in sMap.keys():
+                if sMap[key] != tMap.get(key, 0):
+                    return False
+                
+
+        return True
