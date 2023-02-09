@@ -1,6 +1,7 @@
 class Solution:
     def moveZeroes(self, nums: List[int]) -> None:
-        
+
+        #This for practice
         #This problem can most likely be done using a two pointer
         #use a left and right pointer, you can start at 0 for both to avoid out of bounds error
         #then we iterate through our for loop
