@@ -1,5 +1,6 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
+        #change for practice
          #Ask interviewer for minimum size of array to avoid of out bounds error
         # we could probably do this in one pass with two pointer
         #ask the interviewer of a case where numbers are descending because then there will be no profit
