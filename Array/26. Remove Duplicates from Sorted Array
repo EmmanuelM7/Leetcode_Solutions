@@ -1,5 +1,6 @@
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
+	#practice commiy
         #typically with removing duplicates we would use some sort of hashMap or set
         #but here the constraint is doing it in place
         #since the numbers in the array cannot be less than -100 or more than 100
