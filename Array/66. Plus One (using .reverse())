@@ -1,0 +1,33 @@
+class Solution:
+    def plusOne(self, digits: List[int]) -> List[int]:
+        
+        #have a carry variable that keeps track of whether we have to carry the one 
+        #if the carry is true at the end then we append the number
+        #you should probably reverse the list
+        #.reverse() returns nothing which is why you cannot just return that, you have use .reverse() 
+        #then return digits
+
+        #the main part of this problem is checking whether a digit equals 10 
+        #and whether we have to append to the list
+
+        #Time: O(n)
+        #Space: O(1)
+
+        carry = True
+        digits.reverse() #O(n) time and O(1) space
+        #ex: 00
+
+        for i in range(len(digits)):
+            digits[i] += 1
+            if digits[i] != 10:
+                carry = False
+                break
+            else:
+                digits[i] = 0
+                #carry = True
+
+        if carry:
+            digits.append(1)
+        digits.reverse()
+
+        return digits
